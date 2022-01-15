@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\PostsController;
-use App\Http\UsersController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PostsController;
+
 
 
 
@@ -28,7 +29,7 @@ Route::get('/main', function () {
 });
 
 
-Route::get('/test',[UsersController::class, 'test']);
+Route::get('/home',[PostsController::class, 'index']);
 
 
 
@@ -40,4 +41,5 @@ Route::get('/contact_us', function () {
     return view('pages.contact_us');
 });
 
-Route::get('/test','UsersController@test');
+
+
