@@ -45,6 +45,8 @@ Route::get('/contact_us', function () {
 
 Route::get('/createPostForm',[PostsController::class, 'createPostForm']);
 
+Route::post('/submitPostForm',[PostsController::class, 'submitPostForm'])->name('submitPostForm');
+
 
 
 
