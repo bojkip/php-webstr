@@ -41,5 +41,10 @@ Route::get('/contact_us', function () {
     return view('pages.contact_us');
 });
 
+// Route::get('/createPostForm','PostsController@createPostForm');
+
+Route::get('/createPostForm',[PostsController::class, 'createPostForm']);
+
+
 
 
