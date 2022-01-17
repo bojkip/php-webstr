@@ -7,7 +7,7 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
-    
+
     public function index(){
 
         $posts = Post::all();
@@ -20,18 +20,33 @@ class PostsController extends Controller
     }
 
     public function submitPostForm(Request $request){
-        
+
         $postTitle = $request->post_title;
         $postText = $request->post_text;
 
-        $post = new Post();
+        if($request->file('post_image')->isValid()){
 
-        $post->title = $postTitle;
-        $post->text = $postText;
+            $time = time();
+            $extension = $request->file('post_image')->extension(); //jpg, png, etc.
 
-        $post->save();
+            $request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
 
-        return redirect()->back();
+
+
+
+            $post = new Post();
+
+            $post->title = $postTitle;
+            $post->text = $postText;
+            $post->image = $time . '.' . $extension;
+
+            $post->save();
+
+            return redirect()->back();
+
+        }else{
+
+        }
 
 
     }
