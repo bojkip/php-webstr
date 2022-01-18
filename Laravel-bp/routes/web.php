@@ -29,7 +29,7 @@ Route::get('/main', function () {
 });
 
 
-Route::get('/home',[PostsController::class, 'index']);
+Route::get('/posts',[PostsController::class, 'index']);
 
 
 
@@ -50,3 +50,11 @@ Route::post('/submitPostForm',[PostsController::class, 'submitPostForm'])->name(
 
 
 
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
