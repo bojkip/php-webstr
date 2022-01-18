@@ -21,6 +21,24 @@ class PostsController extends Controller
 
     public function submitPostForm(Request $request){
 
+        $request->validate([
+
+            'post_title'=>'required|max:50',
+            'post_text' => 'required|min:50',
+            'post_image' => 'required|image|max:2000'
+
+
+
+        ],[
+
+            'post_title.required' => 'Please type a post title!',
+            'post_text.required' => 'Please type a post text!',
+            'post_image.image' => 'The file that you selected is NOT an image!'
+        ]
+    
+    
+    );
+
         $postTitle = $request->post_title;
         $postText = $request->post_text;
 
@@ -42,9 +60,11 @@ class PostsController extends Controller
 
             $post->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('status','The post has been successfuly created!');
 
         }else{
+
+            return \redirect()->back()->with('status','There was a problem with uploading the image, please try again!');
 
         }
 
