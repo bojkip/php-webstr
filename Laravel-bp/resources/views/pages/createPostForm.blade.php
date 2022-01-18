@@ -9,6 +9,21 @@
 
 <p style="text-align:center">You create a new post by filling out this form</p>
 
+@if(session('status'))
+
+<h2 style="text-align: center; color:pink">{{session('status')}}</h2>
+
+@endif
+
+@if($errors->any())
+
+@foreach($errors->all() as $error)
+<div style="text-align: center; color:pink;">{{$error}}</div>
+@endforeach
+
+@endif
+
+
 <form action="{{ route('submitPostForm') }}" method="post" enctype="multipart/form-data">
 @csrf
 
