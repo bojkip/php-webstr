@@ -14,9 +14,13 @@ class PostsController extends Controller
         return view('pages.home',['posts'=>$posts]);
     }
 
+    public function allPosts(){
+        return view('admin.allPosts');
+    }
+
 
     public function createPostForm(){
-        return view('pages.createPostForm');
+        return view('admin.createPostForm');
     }
 
     public function submitPostForm(Request $request){
