@@ -20,6 +20,8 @@ use App\Http\Controllers\PostsController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,6 +49,7 @@ Route::get('/createPostForm',[PostsController::class, 'createPostForm']);
 
 Route::post('/submitPostForm',[PostsController::class, 'submitPostForm'])->name('submitPostForm');
 
+Route::get('/allPosts', [PostsController::class, 'allPosts']);
 
 
 
