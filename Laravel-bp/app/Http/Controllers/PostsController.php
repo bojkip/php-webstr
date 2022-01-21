@@ -15,7 +15,8 @@ class PostsController extends Controller
     }
 
     public function allPosts(){
-        return view('admin.allPosts');
+        $posts = Post::all();
+        return view('admin.allPosts',['posts'=>$posts]);
     }
 
 
