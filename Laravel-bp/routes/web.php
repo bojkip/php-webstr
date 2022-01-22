@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\AdminsController;
 
 
 
@@ -45,11 +46,13 @@ Route::get('/contact_us', function () {
 
 // Route::get('/createPostForm','PostsController@createPostForm');
 
-Route::get('/createPostForm',[PostsController::class, 'createPostForm']);
+Route::get('/createPostForm',[AdminsController::class, 'createPostForm']);
 
-Route::post('/submitPostForm',[PostsController::class, 'submitPostForm'])->name('submitPostForm');
+Route::post('/submitPostForm',[AdminsController::class, 'submitPostForm'])->name('submitPostForm');
 
-Route::get('/allPosts', [PostsController::class, 'allPosts']);
+Route::get('/allPosts',[AdminsController::class, 'allPosts']);
+
+Route::get('/deletePost/{id}', [AdminsController::class, 'deletePost'])->name('deletePost');
 
 
 
