@@ -79,4 +79,71 @@ class AdminsController extends Controller
 
         return \redirect()->back()->with('status', 'Post has been deleted');
     }
+
+    public function editPost($id){
+
+        $post = Post::find($id);
+        return view('admin.editPostForm', ['post' => $post]);
+
+    }
+
+    public function updatePostForm(Request $request){
+
+            $request->validate(
+                [
+
+                    'post_title' => 'max:50',
+                    'post_text' => 'required',
+                    'post_image' => '|image|max:2000'
+
+
+
+                ],
+                [
+
+                    'post_title' => 'Please type a post title!',
+                    'post_text.required' => 'Please type a post text!',
+                    'post_image.image' => 'The file that you selected is NOT an image!'
+                ]
+
+
+            );
+
+            if($request->hasFile('post_image')){
+
+                $postTitle = $request->post_title;
+                $postText = $request->post_text;
+
+                if ($request->file('post_image')->isValid()) {
+
+                        $time = time();
+                        $extension = $request->file('post_image')->extension(); //jpg, png, etc.
+
+                        $request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
+
+                        $array = ['title' => $postTitle, 'text' => $postText, 'image' => $time . '.' . $extension];
+
+                        Post::where('id', $request->id)->update($array);
+
+                        return redirect()->back()->with('status', 'The post has been successfuly updated!');
+
+                }else{
+
+                    return \redirect()->back()->with('status', 'There was a problem with uploading the image, please try again!');
+                }
+        }else{
+
+            $postTitle = $request->post_title;
+            $postText = $request->post_text;
+            // ^ ta 2 reda ne bi trebala tu biti, ali nisam mogao podesiti zagrade
+
+                $array = ['title' => $postTitle, 'text' => $postText];
+
+                Post::where('id', $request->id)->update($array);
+
+                return redirect()->back()->with('status', 'The post has been successfuly updated!');
+        }
+        
+    }
 }
+
