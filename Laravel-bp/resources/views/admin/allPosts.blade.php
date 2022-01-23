@@ -44,7 +44,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a onclick="return confirm('Are you sure you want to delete this post?')" href="{{ route('deletePost', ['id'=>$post['id']]) }}" type="button" class="btn btn-sm btn-outline-danger me-1">Delete</a>
-                  <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                  <a href="{{ route('editPost',['id'=>$post['id']]) }}" type="button" class="btn btn-sm btn-secondary">Edit</a>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
