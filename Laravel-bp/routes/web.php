@@ -23,7 +23,7 @@ use App\Http\Controllers\AdminsController;
 
 
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('welcome');
 });
 
@@ -32,7 +32,7 @@ Route::get('/main', function () {
 });
 
 
-Route::get('/posts',[PostsController::class, 'index']);
+Route::get('/',[PostsController::class, 'index']);
 
 
 
@@ -53,6 +53,11 @@ Route::post('/submitPostForm',[AdminsController::class, 'submitPostForm'])->name
 Route::get('/allPosts',[AdminsController::class, 'allPosts']);
 
 Route::get('/deletePost/{id}', [AdminsController::class, 'deletePost'])->name('deletePost');
+
+Route::get('/editPost/{id}', [AdminsController::class, 'editPost'])->name('editPost');
+
+Route::post('/updatePostForm', [AdminsController::class, 'updatePostForm'])->name('updatePostForm');
+
 
 
 
