@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
@@ -62,6 +63,7 @@ class AdminsController extends Controller
             $post->title = $postTitle;
             $post->text = $postText;
             $post->image = $time . '.' . $extension;
+            $post->user_id = Auth::user()->id;
 
             $post->save();
 
