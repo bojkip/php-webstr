@@ -15,12 +15,11 @@
       <img width="250" height="250" src="{{ asset('storage/posts_images/'.$post->image) }}">
     </div>
 
+
   </div>
   @endforeach
 
-  <div>
-    {{$posts->links()}}
-  </div>
+
 
 </div>
 
