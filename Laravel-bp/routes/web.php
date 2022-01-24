@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AdminsController;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -48,6 +49,8 @@ Route::get('/contact_us', function () {
 Route::get('/ageRestriction', function () {
     return view('pages.ageRestriction');
 })->name('ageRestriction');
+
+Route::get('/loggedInUserPosts', [PostsController::class, 'getPostsFromLoggedInUser']);
 
 
 // Route::get('/createPostForm','PostsController@createPostForm');
