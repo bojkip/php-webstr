@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminsController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,19 +45,29 @@ Route::get('/contact_us', function () {
     return view('pages.contact_us');
 });
 
+Route::get('/ageRestriction', function () {
+    return view('pages.ageRestriction');
+})->name('ageRestriction');
+
+
 // Route::get('/createPostForm','PostsController@createPostForm');
 
-Route::get('/createPostForm',[AdminsController::class, 'createPostForm']);
+Route::group(['middleware'=>['auth']], function(){
 
-Route::post('/submitPostForm',[AdminsController::class, 'submitPostForm'])->name('submitPostForm');
+    Route::get('/createPostForm', [AdminsController::class, 'createPostForm'])->middleware('checkAge');
 
-Route::get('/allPosts',[AdminsController::class, 'allPosts']);
+    Route::post('/submitPostForm', [AdminsController::class, 'submitPostForm'])->name('submitPostForm');
 
-Route::get('/deletePost/{id}', [AdminsController::class, 'deletePost'])->name('deletePost');
+    Route::get('/allPosts', [AdminsController::class, 'allPosts']);
 
-Route::get('/editPost/{id}', [AdminsController::class, 'editPost'])->name('editPost');
+    Route::get('/deletePost/{id}', [AdminsController::class, 'deletePost'])->name('deletePost');
 
-Route::post('/updatePostForm', [AdminsController::class, 'updatePostForm'])->name('updatePostForm');
+    Route::get('/editPost/{id}', [AdminsController::class, 'editPost'])->name('editPost');
+
+    Route::post('/updatePostForm', [AdminsController::class, 'updatePostForm'])->name('updatePostForm');
+});
+
+
 
 
 
