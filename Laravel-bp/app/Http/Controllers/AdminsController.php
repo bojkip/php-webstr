@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdminsController extends Controller
 {
@@ -53,7 +55,13 @@ class AdminsController extends Controller
             $time = time();
             $extension = $request->file('post_image')->extension(); //jpg, png, etc.
 
-            $request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
+            //$request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
+
+            //Storage::disk('public')->save('posts_images', $time . '.' . $extension);
+
+            $path = Storage::disk('local')->put('$time . ' . ' . $extension', $request->file('post_image')->get());
+
+            dd($path);
 
 
 
@@ -121,13 +129,19 @@ class AdminsController extends Controller
                         $time = time();
                         $extension = $request->file('post_image')->extension(); //jpg, png, etc.
 
-                        $request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
+                //$request->file('post_image')->storeAs('posts_images', $time . '.' . $extension);    //2255.jpg
+
+                $path = Storage::disk('local')->put('$time . ' . ' . $extension', $request->file('post_image')->get());
+
+                dd($path);
 
                         $array = ['title' => $postTitle, 'text' => $postText, 'image' => $time . '.' . $extension];
 
                         Post::where('id', $request->id)->update($array);
 
                         return redirect()->back()->with('status', 'The post has been successfuly updated!');
+
+
 
                 }else{
 
