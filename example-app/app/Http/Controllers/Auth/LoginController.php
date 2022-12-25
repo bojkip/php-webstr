@@ -22,7 +22,7 @@ class LoginController extends Controller
             'password'=> 'required',  //maknuli smo obavezno polje jer nam !auth ne bi prošao jer bi ga stalno kočio
         ]);
 
-        if(!auth()->attempt($request->only('email', 'password'))){
+        if(!auth()->attempt($request->only('email', 'password'), $request->remember)){
             return back()->with('status', 'Invalid login details');
         }
 
