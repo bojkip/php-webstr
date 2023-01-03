@@ -10,18 +10,24 @@ use App\Http\Controllers\PostController;
 
 
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 /*
 Route::get('/posts', function () {
     return view('posts.index');
 });
 */
-Route::get('/home', function () {
+
+Route::get('/', function () {
     return view('home');
-})->name('home');;
+})->name('home');
+
+Route::post('/', function () {
+    return view('home');
+})->name('home');
 
 Route::get('/login', [LoginController::class , 'index'])->name('login');
 Route::post('/login', [LoginController::class , 'store']);
@@ -36,6 +42,10 @@ Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboar
 
 Route::get('/posts', [PostController::class , 'index'])->name('posts');
 Route::post('/posts', [PostController::class , 'store']);
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="flex justify-center">
     <div class="w-8/12 bg-white p-6 rouded-lg">
         <form action="{{route('posts')}}" method="POST">
@@ -24,6 +25,9 @@
         </form>
     </div>
 </div>
+
+
+
 
 
 @endsection

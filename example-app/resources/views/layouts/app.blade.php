@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     
-    <title>Posty</title>
+    <title>ManducoMare</title>
 </head>
 <body class="bg-gray-100">
     <nav class="p-6 bg.white flex justify-between mb-6">
         <ul class="flex items-center">
             <li>
-                <a href="/posts" class="p-3">Home</a>
+                <a href="{{route('home')}}" class="p-3">Home</a>
             </li>
             <li>
-                <a href="{{route('dashboard')}}" class="p-3">Dashboard</a>
+                <a href="{{route('dashboard')}}" class="p-3">Menu</a>
             </li>
             <li>
                 <a href="{{route('posts')}}" class="p-3">Posts</a>
