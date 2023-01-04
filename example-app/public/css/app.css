@@ -624,6 +624,11 @@ video {
 .max-w-6xl {
   max-width: 72rem;
 }
+.select-all {
+  -webkit-user-select: all;
+     -moz-user-select: all;
+          user-select: all;
+}
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

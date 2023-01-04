@@ -28,8 +28,10 @@ class LoginController extends Controller
 
 
 
-        return redirect()->route('dashboard');
+        return redirect()->route('posts');
 }
+
+
 
 
 
