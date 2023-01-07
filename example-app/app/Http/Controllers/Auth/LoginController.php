@@ -28,7 +28,7 @@ class LoginController extends Controller
 
 
 
-        return redirect()->route('posts');
+        return redirect()->route('cupon');
 }
 
 

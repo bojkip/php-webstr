@@ -15,10 +15,10 @@
                 <a href="{{route('home')}}" class="p-3">Home</a>
             </li>
             <li>
-                <a href="{{route('dashboard')}}" class="p-3">Menu</a>
+                <a href="{{route('menu')}}" class="p-3">Menu</a>
             </li>
             <li>
-                <a href="{{route('posts')}}" class="p-3">Posts</a>
+                <a href="{{route('cupon')}}" class="p-3">Popust</a>
             </li>
         </ul>
         <ul class="flex items-center">

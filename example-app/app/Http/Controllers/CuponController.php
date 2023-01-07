@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 
-class PostController extends Controller
+class CuponController extends Controller
 {
     public function __construct()
     {
@@ -14,7 +14,7 @@ class PostController extends Controller
     }
 
     public function index(){
-        return view('posts.index');
+        return view('cupons.index');
     }
 
     

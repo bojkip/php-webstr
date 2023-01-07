@@ -2,30 +2,7 @@
 
 @section('content')
 
-<!--
-<div class="flex justify-center">
-    <div class="w-8/12 bg-white p-6 rouded-lg">
-        <form action="{{route('posts')}}" method="POST">
-            @csrf
-            <div class="mb-4">
-            <label for="body" class="sr-only">Body</label>
-            <label for="body" class="sr-only">Body</label>
-            <textarea name="body" id="body" rows="4" cols="30"class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Post something" ></textarea>
 
-            @error('body')
-            <div class="text-red-500 mt-2 text-sm">
-                {{$message}}
-            </div>
-            @enderror
-            </div>
-
-            <div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Post</button>
-            </div>
-        </form>
-    </div>
-</div>
--->
 
 
 <?php
@@ -61,7 +38,7 @@ if (!isset($_SESSION['counter'])) {
 
 $_SESSION['counter']++;
 
-echo "Brojač: " . $_SESSION['counter'];
+//echo "Brojač: " . $_SESSION['counter'];
 
 function maxPopust(){
     if($_SESSION['counter'] > 2){
@@ -121,7 +98,7 @@ function naslov(){
 }
 
 
-session_destroy();
+//session_destroy();
 
 ?>
 
